@@ -1,3 +1,3 @@
 # ECG-Entity-Relationship-Diagram
 
-### Database Group work
+### Database Group 6 work
