@@ -7,6 +7,6 @@
 
 ## Work and it associated file
 
-- ECG ER Diagram : `ECG Entity Relationship Diagram.pdf` / `ECG Entity Relationship Diagram.drawio.pdf`
+- ECG ER Diagram : `ECG Entity Relationship Diagram.pdf` / `ECG Entity Relationship Diagram.drawio.png`
 
 - Relational schema : `ecg.sql`
