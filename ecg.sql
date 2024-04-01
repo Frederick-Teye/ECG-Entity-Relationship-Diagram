@@ -17,11 +17,11 @@ CREATE TABLE meter (
     meter_type VARCHAR(255),
     customer_id INT NOT NULL,
     transformer_id INT NOT NULL,
+    PRIMARY KEY (meter_id),
     FOREIGN KEY (customer_id)
         REFERENCES customer (customer_id),
     FOREIGN KEY (transformer_id)
-        REFERENCES transformer (transformer_id),
-    PRIMARY KEY (meter_id)
+        REFERENCES transformer (transformer_id)
 );
 
 CREATE TABLE transformer (
@@ -29,9 +29,9 @@ CREATE TABLE transformer (
     location VARCHAR(255) NOT NULL,
     capacity FLOAT,
     transmission_line_id INT,
+    PRIMARY KEY (transformer_id),
     FOREIGN KEY (transmission_line_id)
-        REFERENCES transmission_line (line_id),
-    PRIMARY KEY (transformer_id)
+        REFERENCES transmission_line (line_id)
 );
 
 CREATE TABLE billing_system (
@@ -49,9 +49,9 @@ CREATE TABLE transmission_line (
     voltage_level FLOAT NOT NULL,
     legnth FLOAT NOT NULL,
     substation_id INT NOT NULL,
+    PRIMARY KEY (line_id),
     FOREIGN KEY (substation_id)
-        REFERENCES substation (station_id),
-    PRIMARY KEY (line_id)
+        REFERENCES substation (station_id)
 );
 
 CREATE TABLE substation (
@@ -71,7 +71,7 @@ CREATE TABLE employee (
     sex VARCHAR(255),
     job_role VARCHAR(255) NOT NULL,
     substation INT NOT NULL,
+    PRIMARY KEY (snn),
     FOREIGN KEY (substation)
-        REFERENCES substation (station_id),
-    PRIMARY KEY (snn)
+        REFERENCES substation (station_id)
 )
