@@ -11,6 +11,33 @@ CREATE TABLE customer (
     PRIMARY KEY (customer_id)
 );
 
+CREATE TABLE substation (
+    station_id INT NOT NULL,
+    location VARCHAR(255),
+    capacity FLOAT,
+    PRIMARY KEY (station_id)
+);
+
+CREATE TABLE transmission_line (
+    line_id INT NOT NULL,
+    voltage_level FLOAT NOT NULL,
+    length FLOAT NOT NULL,
+    substation_id INT NOT NULL,
+    PRIMARY KEY (line_id),
+    FOREIGN KEY (substation_id)
+        REFERENCES substation (station_id)
+);
+
+CREATE TABLE transformer (
+    transformer_id INT NOT NULL,
+    location VARCHAR(255) NOT NULL,
+    capacity FLOAT,
+    transmission_line_id INT,
+    PRIMARY KEY (transformer_id),
+    FOREIGN KEY (transmission_line_id)
+        REFERENCES transmission_line (line_id)
+);
+
 CREATE TABLE meter (
     meter_id INT NOT NULL,
     installation_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -24,16 +51,6 @@ CREATE TABLE meter (
         REFERENCES transformer (transformer_id)
 );
 
-CREATE TABLE transformer (
-    transformer_id INT NOT NULL,
-    location VARCHAR(255) NOT NULL,
-    capacity FLOAT,
-    transmission_line_id INT,
-    PRIMARY KEY (transformer_id),
-    FOREIGN KEY (transmission_line_id)
-        REFERENCES transmission_line (line_id)
-);
-
 CREATE TABLE billing_system (
     invoice_number INT NOT NULL,
     amount_due FLOAT NOT NULL,
@@ -42,23 +59,6 @@ CREATE TABLE billing_system (
     FOREIGN KEY (customer_id)
         REFERENCES customer (customer_id),
     PRIMARY KEY (invoice_number)
-);
-
-CREATE TABLE transmission_line (
-    line_id INT NOT NULL,
-    voltage_level FLOAT NOT NULL,
-    legnth FLOAT NOT NULL,
-    substation_id INT NOT NULL,
-    PRIMARY KEY (line_id),
-    FOREIGN KEY (substation_id)
-        REFERENCES substation (station_id)
-);
-
-CREATE TABLE substation (
-    station_id INT NOT NULL,
-    location VARCHAR(255),
-    capacity FLOAT,
-    PRIMARY KEY (station_id)
 );
 
 CREATE TABLE employee (
@@ -71,7 +71,7 @@ CREATE TABLE employee (
     sex VARCHAR(255),
     job_role VARCHAR(255) NOT NULL,
     substation INT NOT NULL,
-    PRIMARY KEY (snn),
+    PRIMARY KEY (ssn),
     FOREIGN KEY (substation)
         REFERENCES substation (station_id)
-)
+);
