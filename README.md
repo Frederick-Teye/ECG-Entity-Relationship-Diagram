@@ -11,4 +11,4 @@
 
 - Relational Schema Definition : `ecg.sql`
 
-- `Note` : Please madam, don't bother to check the first file
+- `Note To Instructor` : Please madam, don't bother to check the first file
